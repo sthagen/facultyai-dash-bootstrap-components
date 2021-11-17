@@ -29,6 +29,7 @@ const Button = props => {
     class_name,
     color,
     outline,
+    onClick,
     ...otherProps
   } = props;
 
@@ -41,7 +42,7 @@ const Button = props => {
     }
   };
   const useLink = href && !disabled;
-  otherProps[useLink ? 'preOnClick' : 'onClick'] = incrementClicks;
+  otherProps[useLink ? 'preOnClick' : 'onClick'] = onClick || incrementClicks;
 
   return (
     <RBButton
@@ -145,7 +146,7 @@ Button.propTypes = {
 
   /**
    * Button color, options: primary, secondary, success, info, warning, danger,
-   * link. Default: secondary.
+   * link. Default: primary.
    */
   color: PropTypes.string,
 
